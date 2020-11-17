@@ -9,25 +9,26 @@
 </template>
 
 <script>
-  import {Swiper, SwiperItem} from 'components/common/swiper'
+// import Swiper from "components/common/swiper/Swiper.vue";
+// import SwiperItem from "components/common/swiper/SwiperItem.vue";
+import { Swiper, SwiperItem } from "components/common/swiper";
 
-  export default {
-    name: "HomeSwiper",
-    props: {
-      banners: {
-        type: Array,
-        default() {
-          return []
-        }
+export default {
+  name: "HomeSwiper",
+  props: {
+    banners: {
+      type: Array,
+      default() {
+        return [];
       }
-    },
-    components: {
-      Swiper,
-      SwiperItem
     }
+  },
+  components: {
+    Swiper,
+    SwiperItem
   }
+};
 </script>
 
 <style scoped>
-
 </style>
