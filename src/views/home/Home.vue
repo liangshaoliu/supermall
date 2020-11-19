@@ -73,6 +73,12 @@ export default {
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
   },
+  mouted() {
+    //3.监听item中图片加载完成
+    this.$bus.$on("itemImageLoad", () => {
+      this.$refs.scroll.refresh();
+    });
+  },
   computed: {
     showGoods() {
       return this.goods[this.currentType].list;
@@ -107,6 +113,7 @@ export default {
       // 调用refresh方法实现持续刷新
       this.$refs.scroll.scroll.refresh();
     },
+
     /**
      * 网络请求相关的方法
      */

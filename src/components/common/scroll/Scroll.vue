@@ -43,6 +43,7 @@ export default {
         // console.log(position);
         this.$emit("scroll", position);
       });
+      console.log(this.scroll);
     }
 
     // 3.监听scroll滚动到底部
@@ -55,6 +56,7 @@ export default {
   },
   methods: {
     scrollTo(x, y, time = 300) {
+      // 先判断this.scroll是否为null，为null则不执行语句
       this.scroll && this.scroll.scrollTo(x, y, time);
     },
     refresh() {
