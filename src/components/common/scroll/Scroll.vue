@@ -43,7 +43,7 @@ export default {
         // console.log(position);
         this.$emit("scroll", position);
       });
-      console.log(this.scroll);
+      // console.log(this.scroll);
     }
 
     // 3.监听scroll滚动到底部

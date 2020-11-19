@@ -35,6 +35,7 @@ import Scroll from "components/common/scroll/Scroll";
 import BackTop from "components/content/backTop/BackTop";
 
 import { getHomeMultidata, getHomeGoods } from "network/home.js";
+import { debounce } from "common/utils.js";
 
 export default {
   name: "Home",
@@ -73,10 +74,11 @@ export default {
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
   },
-  mouted() {
-    //3.监听item中图片加载完成
+  mounted() {
+    // 1.图片加载完成的事件监听
+    const refresh = debounce(this.$refs.scroll.refresh, 50);
     this.$bus.$on("itemImageLoad", () => {
-      this.$refs.scroll.refresh();
+      refresh();
     });
   },
   computed: {
@@ -88,6 +90,7 @@ export default {
     /**
      * 事件监听相关的方法
      */
+
     tabClick(index) {
       switch (index) {
         case 0:
@@ -130,7 +133,7 @@ export default {
         this.goods[type].list.push(...res.data.list);
         this.goods[type].page += 1;
 
-        // 完成上拉加载更多
+        // 完成了上拉加载更多
         this.$refs.scroll.finishPullUp();
       });
     }
